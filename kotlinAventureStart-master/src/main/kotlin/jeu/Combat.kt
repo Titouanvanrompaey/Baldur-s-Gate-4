@@ -16,13 +16,21 @@ class Combat(
         println("\u001b[0m")
     }
 
-    // Méthode pour simuler un tour de combat du monstre
+// Méthode pour simuler un tour de combat du monstre
     fun tourDeMonstre() {
-        println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
-        //TODO Mission 1.3
-        this.monstre.attaque(this.jeu.joueur)
-        println("\u001b[0m")
+        println("le monstre est en plein dileme ")
+        val  nb= (1..100).random()
+        if (nb <= 70) {
+            println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
+            //TODO Mission 1.3
+            this.monstre.attaque(this.jeu.joueur)
+            println("\u001b[0m")
+        }
+        else {
+            println("le monstre ne fait rien")
+        }
     }
+
 
     // Méthode pour exécuter le combat complet
     fun executerCombat() {
