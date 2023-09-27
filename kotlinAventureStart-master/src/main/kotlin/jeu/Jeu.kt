@@ -3,10 +3,9 @@ package jeu
 import personnage.Personnage
 
 
-
 class Jeu(monstres: List<Personnage>) {
     lateinit var joueur: Personnage
-     var combats: MutableList<Combat> = mutableListOf()
+    var combats: MutableList<Combat> = mutableListOf()
     var score: Int = 0
 
     // Corps du constructeur
@@ -14,9 +13,9 @@ class Jeu(monstres: List<Personnage>) {
         // Lancement de la création du personage du joueur
         this.creerPersonnage()
         // Pour chaque monstre dans la liste de monstres
-        for (unMonstre in monstres){
+        for (unMonstre in monstres) {
             // On créer un combat
-            val unCombat= Combat(this,unMonstre)
+            val unCombat = Combat(this, unMonstre)
             combats.add(unCombat)
         }
     }
@@ -43,10 +42,53 @@ class Jeu(monstres: List<Personnage>) {
     fun creerPersonnage(): Personnage {
         println("Création votre personnage:")
         // TODO Mission 1.1
-        val hero = Personnage("YYY",150,150,12,8,8,12)
-        this.joueur= hero
+        val hero = Personnage("", 0, 0, 0, 0, 0, 0)
+        this.joueur = hero
         return hero
+        println("Saisir le nom du personnage")
+        var nomPerso = readln().toString()
+        println("Saisir le nombre de point de vie")
+        var nombrePointDeVie = readln().toInt()
+        println("Saisir le score de l'attaque")
+        var scoreAtq = readln().toInt()
+        println("Saisir le score de défense")
+        var scoreDef = readln().toInt()
+        println("Saisir le score d'endurance")
+        var scoreEnd = readln().toInt()
+        println("Saisir le score de vitesse")
+        var scoreVit = readln().toInt()
+        var pointDeVieMax = scoreEnd - 10
+
+        if (scoreAtq+ scoreDef + scoreEnd + scoreVit > 40) {
+
+                println("Erreur")
+            println("Saisir le nom du personnage")
+            var nomPerso = readln().toString()
+            println("Saisir le nombre de point de vie")
+            var nombrePointDeVie = readln().toInt()
+            println("Saisir le score de l'attaque")
+            scoreAtq = readln().toInt()
+            println("Saisir le score de défense")
+             scoreDef = readln().toInt()
+            println("Saisir le score d'endurance")
+             scoreEnd = readln().toInt()
+            println("Saisir le score de vitesse")
+             scoreVit = readln().toInt()
+            var pointDeVieMax = scoreEnd - 10
+            }
+            else{
+
+
+         println("Bien joué ! ")
+
+        }
+
+   val heros = Personnage (nomPerso, nombrePointDeVie, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
+        }
+
+
+
     }
+
     
 
-}
