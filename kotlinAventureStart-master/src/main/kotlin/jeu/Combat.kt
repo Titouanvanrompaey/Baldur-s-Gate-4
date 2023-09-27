@@ -15,8 +15,7 @@ class Combat(
         println("Qu'allez vous faire ?")
         println("1. Attaquer")
         println("2. Passer votre tour")
-        val scanner  = Scanner(System.`in`)
-        val choixOption = scanner.nextLine()
+        val choixOption = readln()
         if (choixOption=="1") {
             this.jeu.joueur.attaque(monstre)
         }
