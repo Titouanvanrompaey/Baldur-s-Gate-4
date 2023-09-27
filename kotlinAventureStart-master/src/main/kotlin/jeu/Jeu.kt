@@ -42,9 +42,8 @@ class Jeu(monstres: List<Personnage>) {
     fun creerPersonnage(): Personnage {
         println("Création votre personnage:")
         // TODO Mission 1.1
-        val hero = Personnage("", 0, 0, 0, 0, 0, 0)
-        this.joueur = hero
-        return hero
+        //val hero = Personnage("", 0, 0, 0, 0, 0, 0)
+
         println("Saisir le nom du personnage")
         var nomPerso = readln().toString()
         println("Saisir le nombre de point de vie")
@@ -57,7 +56,7 @@ class Jeu(monstres: List<Personnage>) {
         var scoreEnd = readln().toInt()
         println("Saisir le score de vitesse")
         var scoreVit = readln().toInt()
-        var pointDeVieMax = scoreEnd - 10
+        var pointDeVieMax =50+ (scoreEnd * 10)
 
         if (scoreAtq+ scoreDef + scoreEnd + scoreVit > 40) {
 
@@ -79,16 +78,20 @@ class Jeu(monstres: List<Personnage>) {
             else{
 
 
-         println("Bien joué ! ")
+
 
         }
 
-   val heros = Personnage (nomPerso, nombrePointDeVie, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
-        }
+   val heros = Personnage (nomPerso, pointDeVieMax, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
+        println(heros)
+        this.joueur = heros
+        return heros
+    }
 
 
 
     }
 
     
+
 
