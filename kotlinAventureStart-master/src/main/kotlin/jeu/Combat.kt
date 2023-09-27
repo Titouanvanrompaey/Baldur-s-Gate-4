@@ -12,7 +12,17 @@ class Combat(
     fun tourDeJoueur() {
         println("\u001B[34m ---Tour de ${this.jeu.joueur.nom} (pv: ${this.jeu.joueur.pointDeVie}) ---")
        //TODO Mission 1.2
-        this.jeu.joueur.attaque(monstre)
+        println("Qu'allez vous faire ?")
+        println("1. Attaquer")
+        println("2. Passer votre tour")
+        val scanner  = Scanner(System.`in`)
+        val choixOption = scanner.nextLine()
+        if (choixOption=="1") {
+            this.jeu.joueur.attaque(monstre)
+        }
+        else if (choixOption=="2"){
+            println("Le joueur passe son tour.")
+        }
         println("\u001b[0m")
     }
 
