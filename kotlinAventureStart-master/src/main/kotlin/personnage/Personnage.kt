@@ -1,6 +1,9 @@
 package personnage
 
- class Personnage(
+import item.Arme
+import java.nio.file.attribute.GroupPrincipal
+
+class Personnage(
     val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
@@ -8,12 +11,21 @@ package personnage
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
+    var armePrincipal: Arme?=null
+
+
 ) {
+
 
      fun calculeDefense():Int{
          //TODO Mission 4.2
         return this.defense/2;
+
+
      }
+
+
+
 
      // Méthode pour attaquer un adversaire
      fun attaque(adversaire: Personnage) {
