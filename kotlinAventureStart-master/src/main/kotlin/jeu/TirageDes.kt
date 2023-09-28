@@ -1,30 +1,34 @@
 package jeu
 
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
+class TirageDes(val nbDe:Int, val maxDe:Int) {
 
-internal class TirageDesTest {
-    // Test unitaire pour le tirage de Des
-    @Test
-    fun lance() {
-        // Création d'un objet TirageDes pour simuler un lancé de dés 3d9
-        val des = TirageDes(3, 9)
+    fun lance():Int{
+        val desDegats = TirageDes(1, 8)
+        val deCritique = TirageDes(1, 20)
 
-        // Utilisation de la méthode lance() pour obtenir le résultat du lancé
-        val resultat = des.lance()
-        println(" result = $resultat")
-        // Le résultat doit être compris entre 3 (minimum possible avec 3 dés) et 27 (maximum possible avec 3 dés à 9 faces)
-        // valeur minimum = 3*1
-        // valeur maximum = 3*9 =27
-        Assertions.assertTrue(resultat >= 3)
-        Assertions.assertTrue(resultat <= 27)
-        // ou
-        //Assertions.assertTrue(resultat in (3..27))
 
-        Assertions.assertEquals("","")
-        Assertions.assertNotEquals("a",'a')
-        Assertions.assertNotNull("machin")
+
+
+
+        // Si on lance 3d8
+        // nbDe = 3 correspond au nombre de dés que l'on souhaite lancer
+        // maxDe = 8 correspond au nombre de face du dé et aussi a la valeur maximum du dé
+        // resultat =0
+        // on lance le premier dé on fait un 4
+        // resultat =4
+        // on lance le deuxième dé on fait un 3
+        // resultat =7
+        // on lance le troisème dé on fait un 8
+        // resultat = 15
+        // la méthode retourne 15
+        var resultat=0
+        repeat(this.nbDe){
+            resultat+=(1..this.maxDe).random()
+        }
+        return resultat
+
+
+
 
     }
 }
-
