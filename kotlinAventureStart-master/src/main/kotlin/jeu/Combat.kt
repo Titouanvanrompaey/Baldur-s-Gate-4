@@ -26,17 +26,21 @@ class Combat(
     }
 
 // Méthode pour simuler un tour de combat du monstre
-    fun tourDeMonstre() {
-        println("le monstre est en plein dileme ")
+   fun tourDeMonstre() {
+        println("\u001b[31m Le monstre est en plein dilemme ")
+        println("\u001b[0m")
         val  nb= (1..100).random()
         if (nb <= 70) {
-            println("\u001B[31m---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
+            println("\u001B[25m ---Tour de ${monstre.nom} (pv: ${monstre.pointDeVie}) ---")
             //TODO Mission 1.3
             this.monstre.attaque(this.jeu.joueur)
-            println("\u001b[0m")
+            println("\u001B[0m")
+
         }
         else {
-            println("le monstre ne fait rien")
+            println(" \u001B[31m le monstre ne fait rien")
+            println("\u001b[0m")
+
         }
     }
 
