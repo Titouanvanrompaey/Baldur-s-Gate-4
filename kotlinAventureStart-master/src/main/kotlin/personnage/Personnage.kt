@@ -1,6 +1,8 @@
 package personnage
 
 import item.Arme
+import item.Armure
+import item.Item
 import java.nio.file.attribute.GroupPrincipal
 
 class Personnage(
@@ -11,22 +13,14 @@ class Personnage(
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
-    var armePrincipal: Arme?=null
-
-
-) {
-
+    var armure: Armure,
+    var armePrincipale: Arme,
+    var inventaire: MutableList<Item>) {
 
      fun calculeDefense():Int{
          //TODO Mission 4.2
         return this.defense/2;
-
-
      }
-
-
-
-
      // Méthode pour attaquer un adversaire
      fun attaque(adversaire: Personnage) {
         //TODO Mission 4.1
@@ -38,6 +32,4 @@ class Personnage(
     override fun toString(): String {
         return "$nom (PV: $pointDeVie/$pointDeVieMax, Attaque: $attaque, Défense: $defense, Endurance: $endurance, Vitesse: $vitesse)"
     }
-
-
 }
