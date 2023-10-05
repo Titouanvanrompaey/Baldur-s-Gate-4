@@ -46,11 +46,14 @@ val hero = Personnage("hero", 20, 40, 12, 8, 10, 7)
         println("Les dégats infligés sont {$degats_infliges}")
          //
 
-         println("Le nombre de dégats est ${degats}, affligé par ${hero} ")
-         if (degats>1)
-         {
-             degats+=1
-         }
+         if (degats<1)
+        {
+            degats=1
+        }
+        println("Les dégats infligés sont {$degats}")
+         //
+
+         println("Le nombre de dégats est ${degats}, affligé par ${this.nom} ")
          adversaire.pointDeVie-=degats
 
     }
