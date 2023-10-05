@@ -13,7 +13,8 @@ class Personnage(
     var defense: Int,
     var endurance: Int,
     var vitesse: Int,
-    var armePrincipal: Arme?=null
+    var armePrincipal: Arme?=null,
+    var amure: Armure
 
 
 ) {
