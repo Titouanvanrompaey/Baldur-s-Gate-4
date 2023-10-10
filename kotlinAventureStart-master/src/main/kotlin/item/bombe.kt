@@ -1,17 +1,11 @@
-package item
-import jeu.TirageDes
-import personnage.Personnage
-
-open class Item
-
 class Bombe(
     val nombreDeDes: Int,
     var maxDe: Int,
-    val nom: String,
-    var description: String,
+    nom: String,
+    description: String,
     val monstre: Personnage
-) {
-    fun utiliser(cible: Personnage) {
+):Item(nom,description) {
+   override fun utiliser(cible: Personnage) {
         // Création d'un objet TirageDes pour simuler un lancé de dés 3d8
         val des = TirageDes(this.nombreDeDes, this.maxDe)
 
@@ -25,28 +19,5 @@ class Bombe(
         val pointsDeVieRestants = this.monstre.pointDeVie - resultatFinal
 
         println("L'adversaire a $pointsDeVieRestants points de vie restants.")
-    }
-}
-
-class Personnage {
-    private val inventaire: MutableList<String> = mutableListOf()
-
-    fun ajouterBombe(bombe: String) {
-        inventaire.add(bombe)
-    }
-
-    fun avoirBombe(): Boolean {
-        return inventaire.contains("bombe")
-    }
-
-    fun main() {
-        val personnage = Personnage()
-        personnage.ajouterBombe("bombe explosive")
-
-        if (personnage.avoirBombe()) {
-            println("Le personnage a au moins une bombe dans son inventaire.")
-        } else {
-            println("Le personnage n'a pas de bombe dans son inventaire.")
-        }
     }
 }
