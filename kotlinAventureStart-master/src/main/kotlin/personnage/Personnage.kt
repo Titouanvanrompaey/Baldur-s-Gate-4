@@ -67,7 +67,6 @@ class Personnage(
         this.armePrincipal = arme
         println("$nom equipe {$armePrincipal}")
 
-
         //      return "$nom (PV: $pointDeVie/$pointDeVieMax, Attaque: $attaque, Défense: $defense, Endurance: $endurance, Vitesse: $vitesse)"
     }
 
