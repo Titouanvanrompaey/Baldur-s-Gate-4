@@ -67,12 +67,53 @@ class Personnage(
         this.armePrincipal = arme
         println("$nom equipe {$armePrincipal}")
 
+
         //      return "$nom (PV: $pointDeVie/$pointDeVieMax, Attaque: $attaque, Défense: $defense, Endurance: $endurance, Vitesse: $vitesse)"
     }
 
+    fun ajouterBombe(bombe: Item) {
+        inventaire.add(bombe)
+    }
 
+    fun avoirBombe(): Boolean {
+        return inventaire.any { it is Bombe }
+    }
 
+    var pointsDeVie: Int = 100 // Points de vie initiaux du personnage
+    val pointsDeVieMax: Int = 100 // Points de vie maximum du personnage
 
+    fun avoirPotion(): Boolean {
+        return inventaire.isNotEmpty()
+    }
 
+    fun ajouterPotion(potion: Item) {
+        inventaire.add(potion)
+    }
 
+    fun boirePotion() {
+        var potion: Potion
+        if (avoirPotion()) {
+            for (k in inventaire) {
+                if (k is Potion) {
+
+                    potion = k
+
+                    val montantDeSoin = potion
+                    pointsDeVie += montantDeSoin.soin
+
+                    if (pointsDeVie > pointsDeVieMax) {
+                        pointsDeVie = pointsDeVieMax
+                    }
+
+                    println("Le personnage boit la potion ${potion.nom} et récupère $montantDeSoin points de vie.")
+                    inventaire.remove(k)
+                    break
+
+                }
+            }
+
+        } else {
+            println("Le personnage n'a pas de potion dans son inventaire.")
+        }
+    }
 }
