@@ -11,22 +11,25 @@ class Personnage(
     val pointDeVieMax: Int,
     var attaque: Int,
     var defense: Int,
-    var endurance: Int,
+    var endurance: Int? = null,
     var vitesse: Int,
-    var armePrincipal: Arme?=null,
-    var amure: Armure
-
-
+    var armePrincipal: Arme? = null,
+    var armure: Armure? = null,
+    var inventaire: MutableList<Item> = mutableListOf()
 ) {
 
 val hero = Personnage("hero", 20, 40, 12, 8, 10, 7)
-     fun calculeDefense():Int{
-         //TODO Mission 4.2
-        return this.defense/2;
-
-
-     }
-
+     fun calculeTotalDefense(): Int {
+        //TODO Mission 4.2
+        var resultat = (this.defense / 2) + this.armure!!.calculProtection()
+        return resultat;
+    }
+fun equipe(armure: Armure) {
+        if (armure in this.inventaire) {
+            this.armure = armure
+            println("$nom equipe {$armure}")
+        }
+    }
 
     // Méthode pour attaquer un adversaire
      fun attaque(adversaire: Personnage) {
@@ -66,5 +69,49 @@ val hero = Personnage("hero", 20, 40, 12, 8, 10, 7)
     }
 
         return "$nom (PV: $pointDeVie/$pointDeVieMax, Attaque: $attaque, Défense: $defense, Endurance: $endurance, Vitesse: $vitesse)"
+    }
+fun ajouterBombe(bombe: Item) {
+        inventaire.add(bombe)
+    }
+
+    fun avoirBombe(): Boolean {
+        return inventaire.any { it is Bombe }
+    }
+
+    var pointsDeVie: Int = 100 // Points de vie initiaux du personnage
+    val pointsDeVieMax: Int = 100 // Points de vie maximum du personnage
+
+    fun avoirPotion(): Boolean {
+        return inventaire.isNotEmpty()
+    }
+
+    fun ajouterPotion(potion: Item) {
+        inventaire.add(potion)
+    }
+
+    fun boirePotion() {
+        var potion: Potion
+        if (avoirPotion()) {
+            for (k in inventaire) {
+                if (k is Potion) {
+
+                    potion = k
+
+                    val montantDeSoin = potion
+                    pointsDeVie += montantDeSoin.soin
+
+                    if (pointsDeVie > pointsDeVieMax) {
+                        pointsDeVie = pointsDeVieMax
+                    }
+
+                    println("Le personnage boit la potion ${potion.nom} et récupère $montantDeSoin points de vie.")
+                    inventaire.remove(k)
+                    break
+
+                }
+            }
+        } else {
+            println("Le personnage n'a pas de potion dans son inventaire.")
+        }
     }
 }
