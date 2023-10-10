@@ -1,3 +1,10 @@
+package item
+import  Item
+import jeu.TirageDes
+import personnage.Personnage
+
+
+
 class Bombe(
     val nombreDeDes: Int,
     var maxDe: Int,
