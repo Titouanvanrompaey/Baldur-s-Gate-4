@@ -14,12 +14,23 @@ class Combat(
        //TODO Mission 1.2
         println("Qu'allez vous faire ?")
         println("1. Attaquer")
-        println("2. Passer votre tour")
+        println("2. Boire une potion")
+        println("3. Passer votre tour")
         val choixOption = readln()
+        while (choixOption!="1" && choixOption!="2" && choixOption!="3"){
+            println("Qu'allez vous faire ?")
+            println("1. Attaquer")
+            println("2. Boire une potion")
+            println("3. Passer votre tour")
+            val choixOption = readln()
+        }
         if (choixOption=="1") {
             this.jeu.joueur.attaque(monstre)
         }
         else if (choixOption=="2"){
+            this.jeu.joueur.boirePotion()
+        }
+        else if (choixOption=="3"){
             println("Le joueur passe son tour.")
         }
         println("\u001b[0m")
