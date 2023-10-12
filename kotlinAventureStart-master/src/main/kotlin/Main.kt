@@ -8,40 +8,40 @@ val qualiteRare = Qualite("rare", 1, couleur = "\u001B[34m")
 val qualiteEpic = Qualite("epic", 2, "\u001B[35m")
 val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
 
-fun main(args: Array<String>) {
+fun monstres(args: Array<String>) {
     //Instantiation des monstres
     val gobelin = Personnage(
         "Damien",
-        pointDeVie = 20,
-        pointDeVieMax = 20,
-        attaque = 5,
+        pointDeVie = 40,
+        pointDeVieMax = 40,
+        attaque = 10,
         defense = 4,
         vitesse = 11,
         endurance = 6)
 
     val Basilic = Personnage(
         "Heboros",
-        pointDeVie = 52,
-        pointDeVieMax = 52,
-        attaque = 16,
+        pointDeVie = 100,
+        pointDeVieMax = 100,
+        attaque = 30,
         defense = 15,
         vitesse = 6,
         endurance = 8)
 
     val Minotor_squelette = Personnage(
         "vasar",
-        pointDeVie = 67,
-        pointDeVieMax = 67,
-        attaque = 18 ,
+        pointDeVie = 120,
+        pointDeVieMax = 120,
+        attaque = 40 ,
         defense = 12,
         vitesse = 12,
         endurance = 9)
 
     val Yeenoghu = Personnage(
         "bald",
-        pointDeVie = 333,
-        pointDeVieMax = 333,
-        attaque = 29 ,
+        pointDeVie = 600,
+        pointDeVieMax = 600,
+        attaque = 60 ,
         defense = 23,
         vitesse = 15,
         endurance = 9)
