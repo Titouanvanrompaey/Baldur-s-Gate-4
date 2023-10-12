@@ -1,5 +1,7 @@
 import item.Qualite
+import item.Sort
 import jeu.Jeu
+import jeu.TirageDes
 import personnage.Personnage
 
 //instanciation des qualités des objets
@@ -34,8 +36,11 @@ val armureMagique = object : Armure("Armure Magique", 30) {
     }
 }
 
+
 fun monstres(args: Array<String>) {
     //Instantiation des monstres
+    // TODO Intermission 1 Ajouter d'autres monstres
+    //On ajoute les monstres a la liste de monstres du jeu
     val gobelin = Personnage(
         "Damien",
         pointDeVie = 40,
@@ -71,8 +76,7 @@ fun monstres(args: Array<String>) {
         defense = 23,
         vitesse = 15,
         endurance = 9)
-    // TODO Intermission 1 Ajouter d'autres monstres
-    //On ajoute les monstres a la liste de monstres du jeu
+    
     val jeu = Jeu(listOf( gobelin, Basilic, Minotor_squelette, Yeenoghu))
     //Lancement du jeu
     jeu.lancerCombat()
