@@ -6,7 +6,7 @@ import item.Armure
 import item.Bombe
 import item.Potion
 
-class Personnage(
+open class Personnage(
     val nom: String,
     var pointDeVie: Int,
     val pointDeVieMax: Int,
@@ -19,7 +19,7 @@ class Personnage(
     var inventaire: MutableList<Item> = mutableListOf()
 ) {
 
-    val hero = Personnage("hero", 20, 40, 12, 8, 10, 7)
+
     fun calculeTotalDefense(): Int {
         //TODO Mission 4.2
         var resultat = (this.defense / 2) + this.armure!!.calculProtection()
