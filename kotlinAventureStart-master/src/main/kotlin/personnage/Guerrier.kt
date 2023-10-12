@@ -19,56 +19,58 @@ class Guerrier(
 ) : Personnage(nom, pointDeVie, pointDeVieMax,attaque,defense, endurance, vitesse, armePrincipal, inventaire) {
 
 
-   override fun equipe(uneArme:Arme)
-   {
-println("Choisissez où vous voulez placer l'arme:")
-       var choix = readln().toInt()
-       var a = when(choix){
+    override fun equipe(uneArme: Arme) {
+        println("Choisissez où vous voulez placer l'arme:")
+        var choix = readln().toInt()
+        var a = when (choix) {
             1 -> {
                 armePrincipal?.let { super.equipe(it) }
             }
+
             2 -> {
                 if (uneArme in this.inventaire) {
-                    this.armeSecondaire=uneArme
+                    this.armeSecondaire = uneArme
                 } else {
                     println("Erreur de saisie")
                 }
             }
 
 
-           else -> {
-              "Erreur de saisie"
+            else -> {
+                "Erreur de saisie"
 
-          }
-
-
-      }
-
-//      fun attaque(adversaire: Personnage)
-//       {
-//          var degats = this.attaque / 2
-//           fun totaDefense()
-//           {
-//               var degatot : Int
-//               if (armeSecondaire != null)
-//               {
-//              degatot = this.attaque - this.defense
-//               }
-//               else{
-//                   degatot =this.attaque - this.defense
-//               }
-//               if (degatot > 1)
-//               {
-//                   adversaire.pointDeVie -= degatot
-//                   println("Les dégats infligés sont {$degatot}")
-//               }
-//               else{
-//                   degatot = 1
-//               }
-      }
+            }
 
 
-       }
+        }
+
+        fun attaque(adversaire: Personnage) {
+            var bonusattaque = this.attaque / 2
+                super.attaque(adversaire)
+                var degatot: Int
+                if (armeSecondaire != null) {
+                    degatot = armeSecondaire!!.calculDegat() + bonusattaque - adversaire.calculeDefense()
+                } else {
+                    degatot = bonusattaque- adversaire.calculeDefense()
+                }
+                if (degatot > 1) {
+                    adversaire.pointDeVie -= degatot
+                    println("Les dégats infligés sont {$degatot}")
+                } else {
+                    degatot = 1
+                    adversaire.pointDeVie -= degatot
+                    println("Les dégats infligés sont {$degatot}")
+                }
+            }
+        
+    }
+}
+
+
+
+
+
+
 
 
 
