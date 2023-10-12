@@ -4,6 +4,8 @@ import item.Arme
 import item.Armure
 import Item
 import personnage.Personnage
+
+//construction de la class Voleur
 class Voleur(nom: String,
              pointDeVie: Int,
              pointDeVieMax: Int,
@@ -15,6 +17,8 @@ class Voleur(nom: String,
              armure: Armure? = null,
              inventaire: MutableList<Item> = mutableListOf())
     :Personnage(nom, pointDeVie, pointDeVieMax, attaque, defense, endurance, vitesse, armePrincipal, armure, inventaire) {
+      
+      //méthode voler
         fun voler(cible: Personnage){
             if (cible.inventaire.isEmpty())
                 println("L'inventaire de ${cible.nom} est vide. Vous n'avez rien pu voler")
