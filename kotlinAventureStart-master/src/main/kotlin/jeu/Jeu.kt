@@ -1,6 +1,9 @@
 package jeu
 
+import personnage.Guerrier
+import personnage.Mage
 import personnage.Personnage
+import personnage.Voleur
 
 
 class Jeu(monstres: List<Personnage>) {
@@ -44,7 +47,7 @@ class Jeu(monstres: List<Personnage>) {
         // TODO Mission 1.1
         //val hero = Personnage("", 0, 0, 0, 0, 0, 0)
 
-println("Saisir le nom du personnage")
+        println("Saisir le nom du personnage")
         var nomPerso = readln().toString()
         println("Choisir la classe que $nomPerso doit avoir. Entrez le nombre correspondant")
         println("1. Guerrier")
@@ -65,7 +68,7 @@ println("Saisir le nom du personnage")
         var scoreVit = readln().toInt()
         var pointDeVieMax =50+ (scoreEnd * 10)
 
-        if (scoreAtq+ scoreDef + scoreEnd + scoreVit > 40) {
+        while (scoreAtq+ scoreDef + scoreEnd + scoreVit > 40) {
             println("Erreur vous avez mis plus de point qu'autorisé")
             println("Saisir le nom du personnage")
             nomPerso = readln().toString()
