@@ -7,6 +7,32 @@ val qualiteCommun = Qualite("commun", 0, "\u001B[32m")
 val qualiteRare = Qualite("rare", 1, couleur = "\u001B[34m")
 val qualiteEpic = Qualite("epic", 2, "\u001B[35m")
 val qualiteLegendaire = Qualite("legendaire", 3, "\u001B[33m")
+val sortDeSoin = object : Sort("Sort de Soin", 80) {
+    override fun effet(caster: Personnage, cible: Personnage) {
+        val tirageDes = TirageDes(nbDe = 1, maxDe = 6)
+        var soin = tirageDes.lance()
+        soin = maxOf(a = 1, b = soin + 80)
+        cible.pointDeVie(soin)
+        println("Le sort de soin a soigné ${cible.nom} de $soin points de vie.")
+    }
+}
+val armeMagique = object : Arme("Épée Magique", 50) {
+    override fun attaquer(cible: Personnage) {
+        val degats = this.puissance - cible.defense
+        if (degats > 0) {
+            cible.recevoirDegats(degats)
+            println("${this.nom} inflige $degats points de dégâts à ${cible.nom} !")
+        } else {
+            println("${this.nom} est inefficace contre ${cible.nom} à cause de sa défense élevée !")
+        }
+    }
+}
+val armureMagique = object : Armure("Armure Magique", 30) {
+    override fun encaisserDegats(degats: Int) {
+        val degatsReduits = maxOf(1, degats - this.defense)
+        println("${this.nom} absorbe $degatsReduits points de dégâts !")
+    }
+}
 
 fun monstres(args: Array<String>) {
     //Instantiation des monstres
