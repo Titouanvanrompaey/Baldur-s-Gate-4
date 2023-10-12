@@ -15,23 +15,37 @@ class Combat(
         println("Qu'allez vous faire ?")
         println("1. Attaquer")
         println("2. Boire une potion")
-        println("3. Passer votre tour")
-        val choixOption = readln()
-        while (choixOption!="1" && choixOption!="2" && choixOption!="3"){
+        println("3. lancer un sort")
+        println("4. Voler")
+        println("5. Passer votre tour")
+        var choixOption = readln()
+        while (choixOption!="1" && choixOption!="2" && choixOption!="3" && choixOption!="4" && choixOption!="5"){
             println("Qu'allez vous faire ?")
             println("1. Attaquer")
             println("2. Boire une potion")
-            println("3. Passer votre tour")
-            val choixOption = readln()
+            println("3. Lancer un sort")
+            println("4. Voler")
+            println("5. Passer votre tour")
+            choixOption = readln()
         }
-        if (choixOption=="1") {
-            this.jeu.joueur.attaque(monstre)
-        }
-        else if (choixOption=="2"){
-            this.jeu.joueur.boirePotion()
-        }
-        else if (choixOption=="3"){
-            println("Le joueur passe son tour.")
+        when (choixOption) {
+            "1" -> {
+                this.jeu.joueur.attaque(monstre)
+            }
+            "2" -> {
+                this.jeu.joueur.boirePotion()
+            }
+            "3" -> {
+                val mage=this.jeu.joueur as Mage
+                mage.choisirEtLancerSort(monstre)
+            }
+            "4" -> {
+                val voleur= this.jeu.joueur as Voleur
+                voleur.voler(monstre)
+            }
+            "5" -> {
+                println("Le joueur passe son tour.")
+            }
         }
         println("\u001b[0m")
     }
