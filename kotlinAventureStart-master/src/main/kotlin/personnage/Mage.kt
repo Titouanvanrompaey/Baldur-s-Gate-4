@@ -15,13 +15,45 @@ class Mage(nom: String,
              armure: Armure? = null,
              inventaire: MutableList<Item> = mutableListOf())
     :Personnage(nom, pointDeVie, pointDeVieMax, attaque, defense, endurance, vitesse, armePrincipal, armure, inventaire)
-    :Sort(coutMana, degats)
-    fun lancerSort(sort: Sort, cible: Personnage) {
-       if (pointsDeMana >= sort.coutMana) {
-           println("$nom lance ${sort.nom} sur ${cible.nom}.")
-           pointsDeMana -= sort.coutMana
-           sort.lancerEffet(cible)
-       } else {
-           println("$nom n'a pas assez de mana pour lancer ${sort.nom}.")
+    {
+        fun afficherGrimoire() {
+            println("Affichage du grimoire du mage $nom :")
+            inventaire.filterIsInstance<Sort>().forEachIndexed { index, sort ->
+                println("${index + 1}. ${sort.nom} - Puissance : ${sort.puissance}, Coût en mana : ${sort.coutMana}")
+            }
         }
-}
+        fun choisirEtLancerSort() {
+            afficherGrimoire()
+            println("Veuillez choisir un sort en entrant son numéro d'index :")
+            val choixSort = readLine()?.toIntOrNull()
+
+            if (choixSort != null && choixSort in 0 until inventaire.size) {
+                val sortChoisi = inventaire[choixSort] as? Sort
+
+                if (sortChoisi != null) {
+                    println("Choisissez la cible du sort :")
+                    println("1 => Joueur")
+                    println("2 => Monstre")
+                    val choixCible = readLine()?.toIntOrNull()
+
+                    if (choixCible != null && (choixCible == 1 || choixCible == 2)) {
+                        val cible = if (choixCible == 1) {
+                            this
+                        } else {
+                            // Remplacez Monstre par la classe de votre monstre si nécessaire
+                            Monstre()
+                        }
+
+                        println("$nom lance ${sortChoisi.nom} sur ${cible.nom} !")
+                        sortChoisi.effet(this, cible) // Lance l'effet du sort
+                    } else {
+                        println("Choix de cible invalide. Veuillez choisir une cible valide.")
+                    }
+                } else {
+                    println("Cet objet n'est pas un sort. Veuillez choisir un sort valide.")
+                }
+            } else {
+                println("Index de sort invalide. Veuillez choisir un sort valide.")
+            }
+        }
+    }
