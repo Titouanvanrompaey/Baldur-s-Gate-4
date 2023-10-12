@@ -62,6 +62,8 @@ val armureMagique= Sort("armure magique", { caster, cible ->
 
 fun monstres(args: Array<String>) {
     //Instantiation des monstres
+    // TODO Intermission 1 Ajouter d'autres monstres
+    //On ajoute les monstres a la liste de monstres du jeu
     val gobelin = Personnage(
         "Damien",
         pointDeVie = 40,
@@ -80,7 +82,7 @@ fun monstres(args: Array<String>) {
         vitesse = 6,
         endurance = 8)
 
-    val Minotaure_squelette = Personnage(
+    val Minotor_squelette = Personnage(
         "vasar",
         pointDeVie = 120,
         pointDeVieMax = 120,
@@ -97,9 +99,8 @@ fun monstres(args: Array<String>) {
         defense = 23,
         vitesse = 15,
         endurance = 9)
-    // TODO Intermission 1 Ajouter d'autres monstres
-    //On ajoute les monstres a la liste de monstres du jeu
-    val jeu = Jeu(listOf( gobelin, Basilic, Minotaure_squelette, Yeenoghu))
+
+    val jeu = Jeu(listOf( gobelin, Basilic, Minotor_squelette, Yeenoghu))
     //Lancement du jeu
     jeu.lancerCombat()
 }
