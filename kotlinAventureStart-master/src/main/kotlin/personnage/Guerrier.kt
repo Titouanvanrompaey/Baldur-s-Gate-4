@@ -3,7 +3,7 @@ package personnage
 import item.Arme
 import item.Armure
 
-
+// Création de la class "Guerrier"
 class Guerrier(
     var armeSecondaire: Arme?,
     nom: String,
@@ -18,6 +18,7 @@ class Guerrier(
     inventaire: Armure?,
 ) : Personnage(nom, pointDeVie, pointDeVieMax,attaque,defense, endurance, vitesse, armePrincipal, inventaire) {
 
+    //méthode equipe
 
     override fun equipe(uneArme: Arme) {
         println("Choisissez où vous voulez placer l'arme:")
@@ -44,6 +45,7 @@ class Guerrier(
 
         }
 
+        // méthode attaque
         fun attaque(adversaire: Personnage) {
             var bonusattaque = this.attaque / 2
                 super.attaque(adversaire)
