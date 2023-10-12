@@ -44,48 +44,60 @@ class Jeu(monstres: List<Personnage>) {
         // TODO Mission 1.1
         //val hero = Personnage("", 0, 0, 0, 0, 0, 0)
 
-        println("Saisir le nom du personnage")
+println("Saisir le nom du personnage")
         var nomPerso = readln().toString()
-        println("Saisir le nombre de point de vie")
-        var nombrePointDeVie = readln().toInt()
-        println("Saisir le score de l'attaque")
+        println("Choisir la classe que $nomPerso doit avoir. Entrez le nombre correspondant")
+        println("1. Guerrier")
+        println("2. Mage")
+        println("3. Voleur")
+        var choixClasse= readln().toInt()
+        var pointsARepartir=40
+        println("Saisir le score de l'attaque il reste $pointsARepartir points à répartir parmi l'attaque, la défense, l'endurance, et la vitesse.")
         var scoreAtq = readln().toInt()
-        println("Saisir le score de défense")
+        pointsARepartir-=scoreAtq
+        println("Saisir le score de défense il reste $pointsARepartir points à répartir parmi la défense, l'endurance, et la vitesse.")
         var scoreDef = readln().toInt()
-        println("Saisir le score d'endurance")
+        pointsARepartir-=scoreDef
+        println("Saisir le score d'endurance il reste $pointsARepartir points à répartir parmi l'endurance, et la vitesse.")
         var scoreEnd = readln().toInt()
-        println("Saisir le score de vitesse")
+        pointsARepartir-=scoreEnd
+        println("Saisir le score de vitesse il reste $pointsARepartir points maximum à attribuer dans la vitesse.")
         var scoreVit = readln().toInt()
         var pointDeVieMax =50+ (scoreEnd * 10)
 
         if (scoreAtq+ scoreDef + scoreEnd + scoreVit > 40) {
-
-                println("Erreur")
+            println("Erreur vous avez mis plus de point qu'autorisé")
             println("Saisir le nom du personnage")
-            var nomPerso = readln().toString()
-            println("Saisir le nombre de point de vie")
-            var nombrePointDeVie = readln().toInt()
-            println("Saisir le score de l'attaque")
+            nomPerso = readln().toString()
+            println("Choisir la classe que $nomPerso doit avoir. Entrez le nombre correspondant")
+            println("1. Guerrier")
+            println("2. Mage")
+            println("3. Voleur")
+            choixClasse= readln().toInt()
+            pointsARepartir=40
+            println("Saisir le score de l'attaque il reste $pointsARepartir points à répartir parmi l'attaque, la défense, l'endurance, et la vitesse.")
             scoreAtq = readln().toInt()
-            println("Saisir le score de défense")
-             scoreDef = readln().toInt()
-            println("Saisir le score d'endurance")
-             scoreEnd = readln().toInt()
-            println("Saisir le score de vitesse")
-             scoreVit = readln().toInt()
-            var pointDeVieMax = scoreEnd - 10
+            pointsARepartir-=scoreAtq
+            println("Saisir le score de défense il reste $pointsARepartir points à répartir parmi la défense, l'endurance, et la vitesse.")
+            scoreDef = readln().toInt()
+            pointsARepartir-=scoreDef
+            println("Saisir le score d'endurance il reste $pointsARepartir points à répartir parmi l'endurance, et la vitesse.")
+            scoreEnd = readln().toInt()
+            pointsARepartir-=scoreEnd
+            println("Saisir le score de vitesse il reste $pointsARepartir points maximum à attribuer dans la vitesse.")
+            scoreVit = readln().toInt()
+            pointDeVieMax = 50+ (scoreEnd * 10)
             }
-            else{
-
-
-
-
-        }
-
-   val heros = Personnage (nomPerso, pointDeVieMax, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
-        println(heros)
-        this.joueur = heros
-        return heros
+   var heros :Personnage
+   if (choixClasse==1)
+       heros=Guerrier(nomPerso, pointDeVieMax, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
+   else if (choixClasse==2)
+       heros=Mage(nomPerso, pointDeVieMax, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
+   else
+       heros= Voleur(nomPerso, pointDeVieMax, pointDeVieMax, scoreAtq, scoreDef, scoreEnd, scoreVit)
+   println(heros)
+   this.joueur = heros
+   return heros
     }
 
 
