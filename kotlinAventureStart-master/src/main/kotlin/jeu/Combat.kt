@@ -1,6 +1,8 @@
 package jeu
 
+import personnage.Mage
 import personnage.Personnage
+import personnage.Voleur
 
 class Combat(
     val jeu :Jeu,

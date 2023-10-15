@@ -23,7 +23,7 @@ val typeArmureCuir= TypeArmure("Armure en cuir", 3)
 val armeMagique= Sort("arme magique", { caster, cible ->
     run {
         val tirageDes=TirageDes(nbDe = 1, maxDe = 20)
-        var resultat=tirageDes.lance()
+        val resultat=tirageDes.lance()
         var qualite=qualiteCommun
         if (resultat<5)
             qualite=qualiteCommun
@@ -33,7 +33,7 @@ val armeMagique= Sort("arme magique", { caster, cible ->
             qualite=qualiteEpic
         else
             qualite=qualiteLegendaire
-        var arme= Arme("armeMagique", typeEpeeLongue, qualite ,"une arme magique" )
+        val arme= Arme("armeMagique", typeEpeeLongue, qualite ,"une arme magique" )
         cible.inventaire.add(arme)
         println("Une arme magique a été ajoutée à l'inventaire.")
         cible.armePrincipal=arme
@@ -42,7 +42,7 @@ val armeMagique= Sort("arme magique", { caster, cible ->
 val armureMagique= Sort("armure magique", { caster, cible ->
     run {
         val tirageDes = TirageDes(nbDe = 1, maxDe = 20)
-        var resultat = tirageDes.lance()
+        val resultat = tirageDes.lance()
         var qualite = qualiteCommun
         if (resultat < 5)
             qualite = qualiteCommun
@@ -52,7 +52,7 @@ val armureMagique= Sort("armure magique", { caster, cible ->
             qualite = qualiteEpic
         else
             qualite = qualiteLegendaire
-        var armure = Armure("armure en cuir", "une armure bien sérrée", typeArmureCuir, qualite)
+        val armure = Armure("armure en cuir", "une armure bien sérrée", typeArmureCuir, qualite)
         cible.inventaire.add(armure)
         println("Une armure magique a été ajoutée à l'inventaire.")
         cible.armure = armure
@@ -64,7 +64,7 @@ fun monstres(args: Array<String>) {
     //Instantiation des monstres
     // TODO Intermission 1 Ajouter d'autres monstres
     //On ajoute les monstres a la liste de monstres du jeu
-    val gobelin = Personnage(
+    val goblin = Personnage(
         "Damien",
         pointDeVie = 40,
         pointDeVieMax = 40,
@@ -100,7 +100,7 @@ fun monstres(args: Array<String>) {
         vitesse = 15,
         endurance = 9)
 
-    val jeu = Jeu(listOf( gobelin, Basilic, Minotor_squelette, Yeenoghu))
+    val jeu = Jeu(listOf( goblin, Basilic, Minotor_squelette, Yeenoghu))
     //Lancement du jeu
     jeu.lancerCombat()
 }

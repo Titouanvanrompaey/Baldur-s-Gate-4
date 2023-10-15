@@ -1,9 +1,10 @@
 package item
 
+import Item
 import jeu.TirageDes
 import personnage.Personnage
 
-class Arme(val nom: String, val type: TypeArme, val qualite: Qualite) {
+class Arme(nom: String, val type: TypeArme, val qualite: Qualite, description: String):Item(nom, description) {
 
 
     fun calculDegat(): Int {
@@ -12,7 +13,7 @@ class Arme(val nom: String, val type: TypeArme, val qualite: Qualite) {
         if (deCritique >= this.type.activationCritique) {
             // desDegats * this.type.multiplicateurCritique +   this.qualite.bonusRarete
 
-            desDegats = this.type.multiplicateurCritique * desDegats
+            desDegats *= this.type.multiplicateurCritique
             println("Coup critique")
 
 
@@ -24,7 +25,7 @@ class Arme(val nom: String, val type: TypeArme, val qualite: Qualite) {
     }
 
 
-    fun utiliser(personnage: Personnage) {
+    override fun utiliser(cible: Personnage) {
 
     }
 

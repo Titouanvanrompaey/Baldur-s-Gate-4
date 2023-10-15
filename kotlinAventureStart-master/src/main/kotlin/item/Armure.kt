@@ -1,5 +1,5 @@
 package item;
-
+import Item
 import personnage.Personnage
 
 class Armure (nom:String, description:String, val type:TypeArmure, val qualite: Qualite):Item(nom,description){

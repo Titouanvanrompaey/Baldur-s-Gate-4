@@ -62,7 +62,7 @@ open class Personnage(
 
     }
 
-    fun equipe(arme: Arme) {
+    open fun equipe(arme: Arme) {
 
         this.armePrincipal = arme
         println("$nom equipe {$armePrincipal}")
