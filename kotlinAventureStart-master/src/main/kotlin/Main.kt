@@ -24,15 +24,14 @@ val armeMagique= Sort("arme magique", { caster, cible ->
     run {
         val tirageDes=TirageDes(nbDe = 1, maxDe = 20)
         val resultat=tirageDes.lance()
-        var qualite=qualiteCommun
-        if (resultat<5)
-            qualite=qualiteCommun
+        val qualite = if (resultat<5)
+            qualiteCommun
         else if (resultat<10)
-            qualite=qualiteRare
+            qualiteRare
         else if (resultat<15)
-            qualite=qualiteEpic
+            qualiteEpic
         else
-            qualite=qualiteLegendaire
+            qualiteLegendaire
         val arme= Arme("armeMagique", typeEpeeLongue, qualite ,"une arme magique" )
         cible.inventaire.add(arme)
         println("Une arme magique a été ajoutée à l'inventaire.")
@@ -43,15 +42,14 @@ val armureMagique= Sort("armure magique", { caster, cible ->
     run {
         val tirageDes = TirageDes(nbDe = 1, maxDe = 20)
         val resultat = tirageDes.lance()
-        var qualite = qualiteCommun
-        if (resultat < 5)
-            qualite = qualiteCommun
+        val qualite = if (resultat < 5)
+            qualiteCommun
         else if (resultat < 10)
-            qualite = qualiteRare
+            qualiteRare
         else if (resultat < 15)
-            qualite = qualiteEpic
+            qualiteEpic
         else
-            qualite = qualiteLegendaire
+            qualiteLegendaire
         val armure = Armure("armure en cuir", "une armure bien sérrée", typeArmureCuir, qualite)
         cible.inventaire.add(armure)
         println("Une armure magique a été ajoutée à l'inventaire.")
@@ -60,7 +58,7 @@ val armureMagique= Sort("armure magique", { caster, cible ->
 }
 )
 
-fun monstres(args: Array<String>) {
+fun main(args: Array<String>) {
     //Instantiation des monstres
     // TODO Intermission 1 Ajouter d'autres monstres
     //On ajoute les monstres a la liste de monstres du jeu
