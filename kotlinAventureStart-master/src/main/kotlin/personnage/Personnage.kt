@@ -22,7 +22,11 @@ open class Personnage(
 
     fun calculeTotalDefense(): Int {
         //TODO Mission 4.2
-        var resultat = (this.defense / 2) + this.armure!!.calculProtection()
+
+        var resultat = (this.defense / 2)
+        if (this.armure!=null) {
+            resultat += this.armure!!.calculProtection()
+        }
         return resultat;
     }
 
